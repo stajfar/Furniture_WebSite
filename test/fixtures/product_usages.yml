@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pu_title: MyString
+  pu_pic: MyString
+
+two:
+  pu_title: MyString
+  pu_pic: MyString

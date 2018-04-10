@@ -1,0 +1,47 @@
+<h1>Product_Usages Edit</h1>
+
+
+<div>
+
+<% if @product_usages != nil %>
+
+    <%  @product_usages.each do |f| %>
+
+      <div id="edit-style1">
+        <h3> <%= f.pu_title %></h3>
+        <h2> <%= link_to  'Edit',edit_product_usage_path(f) %></h2>
+      </div>
+
+    <% end %>
+    <br />
+<% end %>
+
+</div>
+
+<div id="edit-style2"> </div>
+
+
+  <%=  form_for (@product_usage) do |f| %>
+
+       <h4> <%=  f.label "Usage title" %> </h4>
+        <%=  f.text_field :pu_title %>           <br/>
+
+
+
+
+
+        <h4> <%=  f.label "Usage pic"%> </h4>
+        <% Dir["app/assets/images/*.jpg"].each do |file| %>
+            <%=  radio_button_tag 'product_usage[pu_pic]', File.basename(file), @product_usage.pu_pic== File.basename(file)%>
+            <%=  File.basename(file) %>
+        <% end %>
+
+      <br /><br /><br />
+
+
+      <p>
+        <%=  f.submit "update usage" %>  <br />
+      </p>
+  <% end %>
+
+

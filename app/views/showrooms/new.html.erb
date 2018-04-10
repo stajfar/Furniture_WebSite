@@ -1,0 +1,70 @@
+<h1>Add new Showroom</h1>
+
+
+<%=  form_for @showroom do |f| %>
+    <% if @showroom.errors.any? %>
+        <h2>Errors:</h2>
+        <ul>
+          <% @showroom.errors.full_messages.each do |message| %>
+              <li> <%= message %> </li>
+          <% end %>
+
+        </ul>
+    <% end %>
+
+
+
+
+    <h4><%=  f.label "Showroom name:" %></h4>
+     <%=  f.text_field :s_title %>
+
+
+
+      <h4><%=  f.label "Showroom city:"%></h4>
+      <%=  f.text_field :s_city %>
+
+
+
+      <h4><%=  f.label "Showroom address:" %></h4>
+      <%=  f.text_field :s_address %>
+
+
+
+      <h4><%=  f.label "Showroom email:" %></h4>
+      <%=  f.text_field :s_email %>
+
+
+
+      <h4><%=  f.label "Showroom tel:" %></h4>
+      <%=  f.text_field :s_tel %>
+
+
+
+      <h4><%=  f.label "Showroom fax:" %></h4>
+      <%=  f.text_field :s_fax %>
+
+
+
+      <h4><%=  f.label "Showroom opening time:" %></h4>
+      <%=  f.text_field :s_opening %>
+
+    <br/><br/>
+
+    <h4>
+                  Select Picture
+    </h4>
+
+      <% Dir["app/assets/images/*.jpg"].each do |file| %>
+          <%=  radio_button_tag 'showroom[s_pic]', File.basename(file) %>
+          <%=  File.basename(file) %>
+      <% end %>
+
+
+      <br/><br/><br/>
+
+      <%=  f.submit "Add new showroom" %>
+
+      <br/><br/><br/>
+
+
+<% end %>

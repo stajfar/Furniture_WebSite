@@ -1,0 +1,97 @@
+<h1>Edit Product</h1>
+
+
+<div>
+
+<% if @products != nil %>
+
+    <%  @products.each do |f| %>
+
+      <div id="edit-style1">
+        <h3> <%= f.pr_name %></h3>
+        <h2> <%= link_to  'Edit',edit_product_path(f) %></h2>
+      </div>
+
+    <% end %>
+    </br>
+<% end %>
+
+</div>
+
+<div id="edit-style2"> </div>
+
+
+<% if @products != nil %>
+    <%=  form_for @product  do |f| %>
+
+
+
+         <h4> <%=  f.label "Product name:" %> </h4>
+          <%=  f.text_field :pr_name %>
+         <br/><br/>
+
+
+
+
+          <h4><%=  f.label "Product Description:"%></h4>
+          <%=  f.text_area :pr_desc %>
+          <br/><br/>
+          <br/><br/>
+
+
+        <h4>
+          Select Picture
+        </h4>
+
+
+        <% Dir["app/assets/images/*.jpg"].each do |file| %>
+              <%=  radio_button_tag 'product[pr_pic1]', File.basename(file), @product.pr_pic1== File.basename(file)%>
+              <%=  File.basename(file) %>
+          <% end %>
+
+        <br/><br/>
+
+
+        <h4>
+          Select Showrooms
+        </h4>
+
+        <% for showroom in Showroom.all%>
+
+                <%=  check_box_tag 'product[showroom_ids][]', showroom.id, @product.showrooms.include?(showroom) %>
+                <%= showroom.s_title %>
+           <% end %>
+
+        <br/><br/>
+
+
+        <h4>
+          Select Designer
+        </h4>
+
+        <% for designer in Designer.all%>
+              <%=  radio_button_tag "product[designer_id]", designer.id, @product.designer_id == designer.id %>
+              <%= designer.d_name %>
+          <% end %>
+
+        <br/><br/>
+
+        <h4>
+          Select Product Usage
+        </h4>
+
+
+        <% for productusage in ProductUsage.all%>
+              <%=  radio_button_tag 'product[pr_usage]', productusage.id , @product.pr_usage == productusage.id %>
+              <%= productusage.pu_title %>
+          <% end %>
+
+
+        <br/><br/><br/>
+
+        <%=  f.submit "Update product" %>
+
+        <br/><br/><br/>
+
+    <% end %>
+<% end %>

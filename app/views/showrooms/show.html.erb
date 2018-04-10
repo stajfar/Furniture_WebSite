@@ -1,0 +1,60 @@
+<title>Showroom & Brand Shop</title>
+
+
+    <div id="index-UR-here">
+        <h3>You are here: <%=  @showrooms.s_title %> </h3>
+    </div>
+
+
+    <div style="float: left; ; width: 800px; margin-left:15px;   ">
+
+       <div  style="float: left; margin-left: 15px;"><%= image_tag @showrooms.s_pic , size: '150x150' , alt:@showrooms.s_title %> </div>
+
+       <div id="index-back1"  style="text-align:left; margin-left:15px; width: 585px; height: 150px;">
+         <div id="showroom-show1">  <%=  @showrooms.s_address %> </div>
+         <div id="showroom-show1">  <%=  @showrooms.s_email %> </div>
+         <div id="showroom-show1">  <%=  @showrooms.s_tel %> </div>
+         <div id="showroom-show1">  <%=  @showrooms.s_fax %> </div>
+         <div id="showroom-show1">  <%=  @showrooms.s_opening %> </div>
+       </div>
+    </div>
+
+
+  <div id="index-link-table">
+            <div id="index-table-title"> Products</div>
+                  <%  @products.each do |f| %>
+                      <div >
+                        <div class="icon2 "><%= link_to  f.pr_name,'/products/show?id='+f.id.to_s %></div>
+                       <hr>
+                      </div>
+                  <% end %>
+            </div>
+
+
+
+      <div id="show-back1">
+        <div  id="show-title1">
+           Products in Showroom
+        </div>
+
+
+        <%  @products.each do |f| %>
+            <div id="show-pic1">
+              <%=  link_to  (image_tag f.pr_pic1 , size: '100x100' , alt: f.pr_name),'/products/show?id='+f.id.to_s %>
+
+            </div>
+        <% end %>
+
+      </div>
+
+
+
+  <div id="show-space1">    </div>
+
+  <div id="show-pos4">  <%=  link_to  (image_tag '/assets/Up.jpg' , size: '30x30' , alt:'Previous'),'/showrooms'  %>  </div>
+
+  <div id="show-space1">    </div>
+
+  <div id="show-pos5">  <%=  link_to  (image_tag '/assets/LeftArrow.jpg' , size: '30x30' , alt:'Previous'),'/showrooms/show?id='+ GoOnLink.new.PrevRecord(params[:id]).to_s %>  </div>
+  <div id="show-pos5" style="margin-left: 30px;">  <%=  link_to  (image_tag '/assets/Right.jpg' , size: '30x30' , alt:'Next'),'/showrooms/show?id='+ GoOnLink.new.NextRecord(params[:id]).to_s %>  </div>
+

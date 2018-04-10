@@ -1,0 +1,48 @@
+
+<div id="index-UR-here">
+<h3>You are here: <%=  @usage.pu_title %></h3>
+</div>
+
+
+
+<div id="index-back1"  style=" min-height: 300px; ">
+
+  <%  @product.each do |p| %>
+      <div id="main-lower-pannel"  style="margin-left: 30px; margin-top: 30px;">
+        <div >
+          <%= link_to (image_tag p.pr_pic1 , size:'300x240', alt: p.pr_name ), '/../products/show?id='+p.id.to_s+'&pu_id='+params[:pu_id]  %>
+        </div>
+        <div class="icon2" style="margin-top: 10px;"><%= link_to  p.pr_name,'/../products/show?id='+p.id.to_s+'&pu_id='+params[:pu_id] %></div>
+      </div>
+  <% end %>
+</div>
+
+
+
+
+<div id="index-link-table">
+
+  <div id="index-table-title">
+  Products of this Usage
+  </div>
+
+  <%  @product.each do |p2| %>
+      <div class="icon2">
+      <%= link_to  p2.pr_name,'/../products/show_product?id='+p2.id.to_s %>
+      </div><hr/>
+  <% end %>
+
+</div>
+
+<div id="show-space1">    </div>
+
+<div id="show-pos5" style="margin-left: 90px; margin-bottom: 5px;">
+  <%=  link_to  (image_tag '/assets/Up.jpg' , size: '30x30' , alt:'Previous'),'../../product_usages/index.html'  %>
+
+  <div class="icon2">
+    <a href="../../product_usages/index.html">
+      Back to All Usages
+    </a>
+  </div>
+
+</div>

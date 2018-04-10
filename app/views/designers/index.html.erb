@@ -1,0 +1,51 @@
+<title>All Designers</title>
+
+
+<div id="index-UR-here">
+  <h3>You are here: All Designers </h3>
+</div>
+
+
+<% if @designers != nil %>
+
+
+
+
+      <div id="index-back1">
+            <%  @designers.each do |f| %>
+
+                <div id="main-lower-pannel">
+
+                  <div id="index-style1">
+                    <%= link_to (image_tag f.d_pic , size:'300x240', alt: f.d_name ), '/designers/show?DesignerID='+f.id.to_s  %>
+                  </div>
+
+                  <div class="icon2" id="index-style2"><%= link_to  f.d_name,'/designers/show?DesignerID='+f.id.to_s %></div>
+
+                </div>
+            <% end %>
+      </div>
+
+
+
+<% end %>
+
+
+
+
+<div id="index-link-table">
+
+  <div id="index-table-title">
+    All Designers
+  </div>
+
+
+  <% if  @designers  != nil %>
+      <%  @designers.each do |f2| %>
+          <div class="icon2">  <%=  link_to  f2.d_name,'/designers/show?DesignerID='+f2.id.to_s %> </div>
+          <hr/>
+      <% end %>
+  <% end %>
+
+</div>
+

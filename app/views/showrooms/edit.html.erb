@@ -1,0 +1,81 @@
+<h1>Showroom Edit</h1>
+
+
+<div>
+
+<% if @showrooms != nil %>
+
+    <%  @showrooms.each do |f| %>
+
+      <div id="edit-style1">
+        <h3> <%= f.s_title %></h3>
+        <h2> <%= link_to  'Edit',edit_showroom_path(f) %></h2>
+      </div>
+
+    <% end %>
+
+<% end %>
+
+</div>
+
+<div id="edit-style2"> </div>
+
+
+  <% if @showrooms != nil %>
+      <%=  form_for (@showroom) do |f| %>
+
+          <h4><%=  f.label "Showroom name:" %></h4>
+              <%=  f.text_field :s_title %>
+          <br/><br/>
+
+
+          <h4><%=  f.label "Showroom city:"%></h4>
+              <%=  f.text_field :s_city %>
+          <br/><br/>
+
+
+          <h4><%=  f.label "Showroom address:" %></h4>
+              <%=  f.text_field :s_address %>
+          <br/><br/>
+
+
+          <h4><%=  f.label "Showroom email:" %></h4>
+              <%=  f.text_field :s_email %>
+          <br/><br/>
+
+
+          <h4><%=  f.label "Showroom tel:" %></h4>
+              <%=  f.text_field :s_tel %>
+          <br/><br/>
+
+
+          <h4><%=  f.label "Showroom fax:" %></h4>
+              <%=  f.text_field :s_fax %>
+          <br/><br/>
+
+
+          <h4><%=  f.label "Showroom opening time:" %></h4>
+            <%=  f.text_field :s_opening %>
+          <br/><br/>
+
+
+          <h4>Select Image</h4>
+
+          <% Dir["app/assets/images/*.jpg"].each do |file| %>
+          <%=  radio_button_tag 'showroom[s_pic]', File.basename(file), @showroom.s_pic== File.basename(file)%>
+          <%=  File.basename(file) %>
+          <% end %>
+
+
+
+
+          <br /><br /><br />
+          <p>
+            <%=  f.submit "Update showroom" %>
+          </p>
+
+          <br />
+      <% end %>
+  <% end %>
+
+</div>

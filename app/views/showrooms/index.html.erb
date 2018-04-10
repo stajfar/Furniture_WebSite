@@ -1,0 +1,95 @@
+<title>All Showrooms</title>
+
+
+<% if @showrooms != nil %>
+
+
+    <div id="index-UR-here">
+      <h3>You are here: All Showrooms </h3>
+    </div>
+
+    <div id="index-back1">
+
+
+            <%  @showrooms.each do |f| %>
+
+                  <div id="main-lower-pannel">
+
+                    <div id="index-style1">
+                           <%= link_to (image_tag f.s_pic , size:'300x240', alt: f.s_title ), '/showrooms/show?id='+f.id.to_s  %>
+                    </div>
+
+                    <div class="icon2" id="index-style2"><%= link_to  f.s_title,'/showrooms/show?id='+f.id.to_s %></div>
+
+                  </div>
+            <% end %>
+      </div>
+
+
+
+
+      <div id="index-link-table">
+        <div id="index-table-title">
+            Showroom by location
+        </div>
+
+          <%  @showroomsCity.each do |f2| %>
+            <div class="icon2"> <%= link_to f2.s_city,'/showrooms/index?City='+f2.s_city %></div>
+            <hr/>
+          <% end %>
+      </div>
+
+
+
+
+
+<% end %>
+
+
+
+
+
+
+<% if  @showroomsByLocation  != nil %>
+
+
+
+
+
+
+          <div id="index-UR-here">
+            <h3>You are here:Showrooms By Location</h3>
+          </div>
+
+          <div id="index-back1">
+            <%  @showroomsByLocation.each do |f3| %>
+                <div id="main-lower-pannel">
+
+                  <div id="index-style1">
+                    <%= link_to (image_tag f3.s_pic , size:'300x240', alt: f3.s_title ), '/showrooms/show?id='+f3.id.to_s  %>
+                  </div>
+
+                  <div class="icon2" id="index-style2"><%= link_to  f3.s_title,'/showrooms/show?id='+f3.id.to_s %></div>
+
+                </div>
+            <% end %>
+          </div>
+
+
+    <div style="float: left; margin-left: 30px; margin-top: 1px; width:1000px;">    </div>
+
+
+    <div style="float: right;  margin-top: 5px; margin-bottom: 15px; margin-right: 45px;">  <%=  link_to  (image_tag '/assets/Up.jpg' , size: '30x30' , alt:'Previous'),'/showrooms'  %>
+      <div class="icon2">
+        <a href="../showrooms/index.html">
+          Back to All Showrooms
+        </a>
+      </div>
+
+
+    </div>
+
+
+
+<% end %>
+

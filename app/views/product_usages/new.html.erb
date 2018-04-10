@@ -1,0 +1,30 @@
+<h1>Add New Usage</h1>
+
+
+<%= form_for (@product_usage) do |u| %>
+
+
+
+        <h4> <%= u.label :title%> </h4>
+         <%= u.text_field :pu_title %>
+
+    <br /><br />
+    <br /><br />
+
+
+      <h4> <%=  u.label "Usage pic:"%> </h4>
+      <% Dir["app/assets/images/*.jpg"].each do |file| %>
+          <%=  radio_button_tag 'product_usage[pu_pic]', File.basename(file), @product_usage.pu_pic== File.basename(file)%>
+          <%=  File.basename(file) %>
+      <% end %>
+
+    <br /><br />
+    <br /><br />
+
+
+    <p>
+      <%= u.submit "Add a usage" %>
+    </p>
+
+
+<%end%>

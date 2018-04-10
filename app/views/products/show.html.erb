@@ -1,0 +1,67 @@
+<title>Product</title>
+
+
+  <div id="index-UR-here">
+    <h3>You are here: <%=  @products.pr_name %> </h3>
+  </div>
+
+
+  <div id="index-back1">
+
+        <div id="show-margin1"><%= image_tag @products.pr_pic1 , size: '150x150' , alt:@products.pr_name %>   <p><%=  @products.pr_name %> </p></div>
+
+        <div id="show-text-just"> <p><%=  @products.pr_desc %> </p> </div>
+
+        <div id="index-space1"> </div>
+
+        <div id="show-margin3" class="icon2">
+            <a href="" > IMAGE GALLERY</a>
+        </div>
+
+  </div>
+
+
+  <div id="index-link-table">
+
+
+    <div id="index-table-title"> Designer</div>
+
+            <div class="icon2"><%= link_to  @designer.d_name,'/designers/show?DesignerID='+@designer.id.to_s %></div>
+          <hr>
+
+
+
+    <div id="index-table-title" style=" margin-top: 35px;"> Showrooms</div>
+
+    <%  @showrooms.each do |f| %>
+
+        <div class="icon2"><%= link_to  f.s_title,'/showrooms/show?id='+f.id.to_s %></div>
+        <hr>
+
+    <% end %>
+
+
+
+    <div id="index-table-title" style="margin-top: 35px;"> Services</div>
+    <div class="icon2"> <a href="" > Cleaning </a></div>
+
+    <hr>
+    <div class="icon2"> <a href="" > Repair </a></div>
+    <hr>
+
+    </div>
+
+<% if params[:pu_id] != nil  %>
+
+   <div id="show-space2">    </div>
+
+   <div id="show-pos2">  <%=  link_to  (image_tag '/assets/Up.jpg' , size: '30x30' , alt:'Previous'),'/products/show_product_by_usage?pu_id='+params[:pu_id]  %>  </div>
+
+   <div id="show-space2">    </div>
+
+
+   <div id="show-pos3"> <%=  link_to  (image_tag '/assets/Right.jpg' , size: '30x30' , alt:'Next'),'/products/show?id='+ GoOnLink.new.NextProduct(params[:id],params[:pu_id]).to_s+'&pu_id='+params[:pu_id].to_s %>  </div>
+   <div id="show-pos3" style="margin-right: 30px;">  <%=  link_to  (image_tag '/assets/LeftArrow.jpg' , size: '30x30' , alt:'Previous'),'/products/show?id='+ GoOnLink.new.PrevProduct(params[:id],params[:pu_id]).to_s+'&pu_id='+params[:pu_id].to_s %>  </div>
+<% end %>
+</div>
+

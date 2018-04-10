@@ -1,0 +1,66 @@
+<title>Designer</title>
+
+
+      <div id="index-UR-here">
+        <h3>You are here : <%= @designer.d_name %></h3>
+      </div>
+
+
+      <div id="index-back1">
+
+        <div id="show-margin1"><%= image_tag @designer.d_pic , size: '150x150' , alt:@designer.d_name %>   <p><%=  @designer.d_name %> </p></div>
+        <div id="show-text-just"> <p><%=  @designer.d_desc %> </p> </div>
+
+      </div>
+
+
+      <div id="index-link-table">
+
+          <div id="index-table-title">
+            Products
+          </div>
+
+          <%  @products.each do |f| %>
+              <div>
+                <div class="icon2"><%= link_to  f.pr_name,'/products/show?id='+f.id.to_s %></div>
+                <hr>
+              </div>
+          <% end %>
+
+        </div>
+
+
+
+          <div id="show-back1">
+
+                <div  id="show-title1">
+                  Products of the Designer:
+                </div>
+
+
+              <%  @products.each do |f| %>
+                  <div id="show-pic1">
+                    <%=  link_to  (image_tag f.pr_pic1 , size: '100x100' , alt: f.pr_name),'/products/show?id='+f.id.to_s %>
+                  </div>
+              <% end %>
+
+
+          </div>
+
+
+
+
+
+  <div id="show-space1">    </div>
+
+
+
+      <div id="show-pos1" style="margin-left: 130px;">  <%=  link_to  (image_tag '/assets/Up.jpg' , size: '30x30' , alt:'Previous'),'/designers'  %>  </div>
+
+      <div id="show-space1">    </div>
+
+      <div id="show-pos1" style="margin-left: 100px;">  <%=  link_to  (image_tag '/assets/LeftArrow.jpg' , size: '30x30' , alt:'Previous'),'/designers/show?DesignerID='+ ManGoOnLink.new.PrevRecord(params[:DesignerID]).to_s  %>  </div>
+      <div id="show-pos1" style="margin-left: 30px; ">  <%=  link_to  (image_tag '/assets/Right.jpg' , size: '30x30' , alt:'Next'),'/designers/show?DesignerID='+ ManGoOnLink.new.NextRecord(params[:DesignerID]).to_s  %>  </div>
+
+
+

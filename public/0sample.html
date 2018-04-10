@@ -1,0 +1,65 @@
+
+<title>Designer</title>
+
+<div style=" margin: 0 auto;" >
+
+
+  <div style="text-align: left; margin-left: 15px; ">
+      <h3>You are here : <%= @designer.d_name %></h3>
+  </div>
+
+
+    <div style="float:left; background: ghostwhite; width:750px; margin-left: 30px; ">
+
+        <div style="float:left; margin-left: 15px; margin-top: 15px;"><%= image_tag @designer.d_pic , size: '150x150' , alt:@designer.d_name %>   <p><%=  @designer.d_name %> </p></div>
+        <div style="float:left; margin-left: 15px; margin-top: 15px; width:550px; text-align: justify; "> <p><%=  @designer.d_desc %> </p> </div>
+
+    </div>
+
+
+    <div style="float:right; background:#fff5e7; width:200px; min-height: 200px; height: auto; margin-right:45px; ">
+
+        <div style=" font-size: large;  height: 30px;">
+            Products
+        </div>
+
+        <%  @products.each do |f| %>
+        <div>
+            <div class="icon2"><%= link_to  f.pr_name,'/products/show?id='+f.id.to_s %></div>
+            <hr>
+        </div>
+        <% end %>
+
+    </div>
+
+
+
+    <div style="float: left; background: ghostwhite; margin-left: 30px; margin-top: 30px; width:750px; min-height:200px;">
+        <div  style="text-align: left; margin-left: 15px; margin-top: 15px; font-size: large;">
+            Products of the Designer:
+        </div>
+
+
+        <%  @products.each do |f| %>
+        <div style="float: left; background: bisque; margin-left: 30px; margin-top: 30px; margin-bottom: 15px; width:100px; height:100px;">
+            <%=  link_to  (image_tag f.pr_pic1 , size: '100x100' , alt: f.pr_name),'/products/show?id='+f.id.to_s %>
+        </div>
+        <% end %>
+
+
+    </div>
+
+
+
+
+
+    <div style="float: left; margin-left: 30px; margin-top: 30px; width:750px;">    </div>
+
+
+
+    <div style="float: left; margin-left: 100px; margin-top: 1px; margin-bottom: 15px;">  <%=  link_to  (image_tag '/assets/LeftArrow.jpg' , size: '30x30' , alt:'Previous'),'/designers/show?DesignerID='+ ManGoOnLink.new.PrevRecord(params[:DesignerID]).to_s  %>  </div>
+    <div style="float: left; margin-left: 30px; margin-top: 1px; margin-bottom: 15px;">  <%=  link_to  (image_tag '/assets/Right.jpg' , size: '30x30' , alt:'Next'),'/designers/show?DesignerID='+ ManGoOnLink.new.NextRecord(params[:DesignerID]).to_s  %>  </div>
+
+
+
+</div>
